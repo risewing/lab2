@@ -1,3 +1,4 @@
+/* Загальні стилі, які застосовуються до всіх пристроїв */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -25,11 +26,6 @@ header {
     border-bottom: 1px solid #ddd;
 }
 
-header h1 {
-    font-size: 36px;
-    margin: 0;
-}
-
 nav {
     text-align: center;
     background-color: #f5f5f5;
@@ -53,7 +49,7 @@ nav a {
 
 .hero-text {
     text-align: center;
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -64,12 +60,10 @@ nav a {
 }
 
 .content {
-    display: grid;
     display: flex;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    flex-wrap: wrap;
     padding: 20px;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .article {
@@ -98,7 +92,6 @@ nav a {
     left: auto;
     transform: translate(0%, -150%);
     color: rgb(255, 255, 255);
-    font-size: 32px;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     width: 260px;
@@ -123,8 +116,71 @@ nav a {
     margin: 5px 0;
 }
 
-@media (max-width: 768px) {
+/* Адаптивні стилі */
+
+/* Десктопна версія (від 1200px і більше) */
+@media screen and (min-width: 1200px) {
+    .content {
+        grid-template-columns: repeat(3, 1fr); /* Відображення статей у 3 колонки */
+    }
+
+    .hero-text {
+        font-size: 40px; /* Збільшуємо розмір шрифту для великих екранів */
+    }
+
+    nav a {
+        font-size: 20px; /* Збільшуємо розмір шрифта навігації */
+    }
+
+    header h1 {
+        font-size: 48px; /* Збільшуємо заголовок */
+    }
+}
+
+/* Планшетна версія (від 768px до 1199px) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .content {
+        grid-template-columns: repeat(2, 1fr); /* Відображення статей у 2 колонки */
+    }
+
+    .hero-text {
+        font-size: 36px; /* Оптимізація розміру шрифту для планшетів */
+    }
+
+    nav a {
+        font-size: 18px; /* Стандартний розмір шрифту для планшетів */
+    }
+
+    header h1 {
+        font-size: 40px;
+    }
+
     .article {
-        width: 100%;
+        width: 100%; /* Статті займають всю ширину на планшетах */
+    }
+}
+
+/* Мобільна версія (до 768px) */
+@media screen and (max-width: 767px) {
+    .content {
+        display: block; /* Відображаємо статті в один стовпчик */
+    }
+
+    .hero-text {
+        font-size: 24px; /* Менший розмір шрифту для мобільних */
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    .article {
+        width: 100%; /* Статті займають всю ширину на мобільних */
     }
 }
